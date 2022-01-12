@@ -1,3 +1,17 @@
 {
-  "": ""
+    "": "",
+    "more": "More",
+    "added_date": "Added date",
+    "home": "Home",
+    "about_izmir": "About izmir",
+    "posts": "Posts",
+    "places_to_travel": "Places to travel",
+    "gallery": "Gallery",
+    "sub_menu": "Sub menu",
+    "sub_sub_menu": "Sub sub menu",
+    "sub_sub_sub_menu": "Sub sub sub menu",
+    "contact": "Contact",
+    "news": "News",
+    "turkish": "Turkish",
+    "english": "English"
 }

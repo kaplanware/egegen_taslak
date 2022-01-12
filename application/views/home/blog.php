@@ -1,6 +1,6 @@
 <div class="col-md-12 row">
     <div class="col-md-12 d-flex justify-content-between">
-        <h4 class="font-weight-bold">Haberler</h4>
+        <h4 class="font-weight-bold"><?= site_phrase("news") ?></h4>
         <form id="myForm">
             <input type="hidden" name="limit" value="3">
             <a href="javascript:void(0)" onclick="kaplanware('<?= base_url("home/get_blog_posts") ?>', 'myForm', $(this))">
@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-12">
                 <p>
-                    <?= (strlen($key->content) > 400 ? substr($key->content, 0, 400) . '<a href="' . base_url("blog/".$key->slug) . '">... Daha Fazla</a>' : $key->content) ?>
+                    <?= (strlen($key->content) > 400 ? substr($key->content, 0, 400) . '<a href="' . base_url("blog/".$key->slug) . '">... ' . site_phrase("more") . '</a>' : $key->content) ?>
                 </p>
             </div>
         </div>

@@ -1,10 +1,17 @@
 {
     "": "",
-    "please_wait": "Please wait",
-    "settings": "Settings",
-    "menu_settings": "Menu settings",
-    "more": "More",
-    "added_date": "Added date",
-    "home": "Home",
-    "about_izmir": "About izmir"
+    "more": "Daha Fazla",
+    "added_date": "Eklenme Tarihi",
+    "home": "Anasayfa",
+    "about_izmir": "İzmir Hakkında",
+    "posts": "Gönderiler",
+    "places_to_travel": "Gezilecek Yerler",
+    "gallery": "Galeri",
+    "sub_menu": "Alt menü",
+    "sub_sub_menu": "Alt alt menü",
+    "sub_sub_sub_menu": "Alt alt alt menü",
+    "contact": "İletişim",
+    "news": "Haberler",
+    "turkish": "Turkish",
+    "english": "English"
 }

@@ -49,4 +49,13 @@ class Home extends CI_Controller
 
         loadView("index", $data);
     }
+
+    public function language($par)
+    {
+
+        if($get = $this->basic_model->getRow("languages", array("id" => $par)))
+            $this->session->set_userdata("language", $get->title);
+
+        goRef();
+    }
 }

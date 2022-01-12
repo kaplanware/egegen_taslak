@@ -24,8 +24,6 @@
                     }
                 })
 
-                console.log(result[result.length - 1])
-
                 let limit = $("input[name=limit]").val();
                 if(result[result.length - 1] == "end")
                     $("input[name=limit]").val("3");
@@ -69,6 +67,9 @@
                 '        </div>';
         });
     }
- 
+
+    function getOption(par){
+        window.location.href = '<?= base_url("home/language/") ?>' + par.val();
+    }
 
 </script>

@@ -219,3 +219,63 @@ function getAbout(){
     $ci =& get_instance();
     return json_decode($ci->basic_model->getRow("about", array("lang" => $ci->basic_model->getRow("languages", array("title" => session("language")))->id))->aboutJson,1);
 }
+
+function subCategory ($elements, $parentId = 0){        //Alt alta kategorileri sıralıyor.
+    $branch = array();
+    foreach ($elements as $element){
+        if ($element->parents == $parentId){
+            $children = subCategory($elements, $element->id);
+            if ($children){
+                $element->children = $children;
+            }else{
+                $element->children = array();
+            }
+            $branch[] = $element;
+        }
+    }
+    return $branch;
+}
+
+function drawElement($items){       //Alt alta kategorileri ekrana yazıyor.
+    foreach ($items as $item){
+        if(isset($_COOKIE["menu_thing"])){
+            if($item->parents != 0) {
+                if ($item->is_sub_main != 1)
+                    echo '<a href="#" class="dropdown-item">' . site_phrase($item->title) . '</a>';
+                else {
+                    echo '<div class="dropdown-submenu">
+                        <a href="#" class="dropdown-item dropdown-toggle"> ' . site_phrase($item->title) . '</a>
+                        <div class="dropdown-menu">';
+                    $_COOKIE["menu_thing"]++;
+                }
+                if (sizeof($item->children) > 0) {
+                    drawElement($item->children);
+                }
+                continue;
+            }
+        }
+
+        if($item->is_sub_main != 1){
+            echo '
+             <li class="nav-item">
+                <a href="#" class="navbar-nav-link">' . site_phrase($item->title) . '</a>
+            </li>
+           ';
+            if(isset($_COOKIE["menu_thing"])){
+
+                unset($_COOKIE["menu_thing"]);
+            }
+        }
+        else{
+            echo '
+             <li class="nav-item dropdown">
+                <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">' . site_phrase($item->title) . '</a>
+                <div class="dropdown-menu">
+           ';
+            $_COOKIE["menu_thing"] = 1;
+        }
+        if (sizeof($item->children) > 0) {
+            drawElement($item->children);
+        }
+    }
+}
