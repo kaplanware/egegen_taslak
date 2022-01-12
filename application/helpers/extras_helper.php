@@ -214,3 +214,8 @@ if (! function_exists('getSettings')){
         return $ci->basic_model->query("SELECT * FROM settings s WHERE $query");
     }
 }
+
+function getAbout(){
+    $ci =& get_instance();
+    return json_decode($ci->basic_model->getRow("about", array("lang" => $ci->basic_model->getRow("languages", array("title" => session("language")))->id))->aboutJson,1);
+}

@@ -11,13 +11,9 @@ class Home extends CI_Controller
 
     public function index()
     {
-        $settings = getSettings(array("title", "slider", "about_title", "about_content"));
-
-        $data["title"] = $settings[0]->value;
-        $data["slider"] = json_decode($settings[3]->value);
-        $data["about_title"] = $settings[1]->value;
-        $data["about_content"] = $settings[2]->value;
-        $data["about"] = json_decode($this->basic_model->getRow("");,1);
+        $data["title"] = site_phrase("home");
+        $data["slider"] = json_decode($this->basic_model->getRow("settings", array("key" => "slider"))->value);
+        $data["about"] = getAbout();
         $data["blog"] = $this->basic_model->getTable("blog", array(), array(3,0));
         
         $data["view"] = "home/home";
@@ -46,11 +42,11 @@ class Home extends CI_Controller
 
     public function about()
     {
-        $blog = $this->basic_model->getTable("blog", array(), array(3,post("limit")));
-        if(empty($blog)) {
-            $blog = $this->basic_model->getTable("blog", array(), array(3, 0));
-            array_push($blog, "end");
-        }
-        echo json_encode($blog);
+        $data["title"] = site_phrase("about_izmir");
+        $data["about"] = getAbout();
+        $data["slider"] = json_decode($this->basic_model->getRow("settings", array("key" => "slider"))->value);
+        $data["view"] = "home/about";
+
+        loadView("index", $data);
     }
 }
