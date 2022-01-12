@@ -1,62 +1,48 @@
 <div class="col-md-12 row">
     <div class="col-md-12 d-flex justify-content-between">
         <h4 class="font-weight-bold">Haberler</h4>
-        <a href="javascript:void(0)" onclick="kaplanware()">
-            <i class="fa fa-plus fa-2x"></i>
-        </a>
+        <form id="myForm">
+            <input type="hidden" name="limit" value="3">
+            <a href="javascript:void(0)" onclick="kaplanware('<?= base_url("home/get_blog_posts") ?>', 'myForm', $(this))">
+                <i class="icon-plus3" style="font-size:4em !important;"></i>
+            </a>
+        </form>
     </div>
-    <div class="col-md-12 row">
+
+    <?php
+    foreach($blog as $ind => $key): ?>
+
+    <div class="col-md-12 row" id="box">
         <div class="col-md-4">
-            <img src="<?= base_url("assets/img/blog/". "izmir1.jpg") ?>" alt="" class="w-100">
+            <a href="<?= base_url("blog/".$key->slug) ?>">
+                <img src="<?= base_url("assets/img/blog/thumb/". $key->thumbnail) ?>" alt="" class="w-100">
+            </a>
         </div>
         <div class="col md-8 row">
             <div class="col-md-12">
-                <h4 class="font-weight-semibold">Deneme Duyuru 1</h4>
+                <a href="<?= base_url("blog/".$key->slug) ?>">
+                    <h4 class="font-weight-semibold">
+                        <?= $key->title ?>
+                    </h4>
+                </a>
             </div>
             <div class="col-md-12">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias doloremque enim eos est excepturi expedita illo ipsam iusto laboriosam natus nemo, nihil, nisi provident quas quibusdam quis recusandae sed sequi.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos impedit laboriosam nihil nostrum ut. Aspernatur aut debitis et maxime minima, natus reprehenderit vero voluptate. Exercitationem expedita iure laudantium magnam nesciunt?
-                    <a href="#">... Daha Fazla</a>
+                <p>
+                    <?= (strlen($key->content) > 400 ? substr($key->content, 0, 400) . '<a href="' . base_url("blog/".$key->slug) . '">... Daha Fazla</a>' : $key->content) ?>
                 </p>
             </div>
         </div>
     </div>
-    <div class="col-md-10 offset-1">
-        <hr>
-    </div>
-    <div class="col-md-12 row">
-        <div class="col-md-4">
-            <img src="<?= base_url("assets/img/blog/". "izmir2.jpg") ?>" alt="" class="w-100">
+
+
+    <?php if($ind != 2): //3 adet post alındığı için, son postta hr koyulmamasını istedim. ?>
+        <div class="col-md-10 offset-1" id="hr">
+            <hr>
         </div>
-        <div class="col md-8 row">
-            <div class="col-md-12">
-                <h4 class="font-weight-semibold">Deneme Duyuru 1</h4>
-            </div>
-            <div class="col-md-12">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias doloremque enim eos est excepturi expedita illo ipsam iusto laboriosam natus nemo, nihil, nisi provident quas quibusdam quis recusandae sed sequi.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos impedit laboriosam nihil nostrum ut. Aspernatur aut debitis et maxime minima, natus reprehenderit vero voluptate. Exercitationem expedita iure laudantium magnam nesciunt?
-                    <a href="#">... Daha Fazla</a>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-10 offset-1">
-        <hr>
-    </div>
-    <div class="col-md-12 row">
-        <div class="col-md-4">
-            <img src="<?= base_url("assets/img/blog/". "celcius.jpg") ?>" alt="" class="w-100">
-        </div>
-        <div class="col md-8 row">
-            <div class="col-md-12">
-                <h4 class="font-weight-semibold">Deneme Duyuru 1</h4>
-            </div>
-            <div class="col-md-12">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias doloremque enim eos est excepturi expedita illo ipsam iusto laboriosam natus nemo, nihil, nisi provident quas quibusdam quis recusandae sed sequi.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos impedit laboriosam nihil nostrum ut. Aspernatur aut debitis et maxime minima, natus reprehenderit vero voluptate. Exercitationem expedita iure laudantium magnam nesciunt?
-                    <a href="#">... Daha Fazla</a>
-                </p>
-            </div>
-        </div>
-    </div>
+    <?php endif; ?>
+
+    <?php endforeach; ?>
+
+    <blog></blog>
+
 </div>

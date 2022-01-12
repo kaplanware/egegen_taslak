@@ -29,9 +29,13 @@ class Basic_model extends CI_Model{
     }
 
 
-    public function getTable($table,$where = array(),$row = false){
+    public function getTable($table,$where = array(), $limit = array(), $row = false){
         $this->db->select('*');
         $this->db->from($table);
+
+        if(!empty($limit))
+            $this->db->limit($limit[0], $limit[1]);
+
         if ($where != NULL) { $this->db->where($where); }
         $query = $this->db->get();
         //$this->db->order_by('id', 'desc');
