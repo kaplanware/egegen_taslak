@@ -11,9 +11,12 @@ class Home extends CI_Controller
 
     public function index()
     {
-        $data["settings"] = getSettings(array(
-            "title", "slider"
-        ));
+        $settings = getSettings(array("title", "slider", "about_title", "about_content"));
+
+        $data["title"] = $settings[0]->value;
+        $data["slider"] = json_decode($settings[3]->value);
+        $data["about_title"] = $settings[1]->value;
+        $data["about_content"] = $settings[2]->value;
         $data["view"] = "home/home";
 
         loadView("index", $data);
