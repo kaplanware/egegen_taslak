@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 13 Oca 2022, 00:09:12
+-- Üretim Zamanı: 13 Oca 2022, 00:42:31
 -- Sunucu sürümü: 10.4.16-MariaDB
 -- PHP Sürümü: 7.4.12
 
@@ -112,7 +112,10 @@ INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 ('pjch1elbddqg7eneo8kij0dt649oiim9', '::1', 1642028012, 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323032383031323b6c616e67756167657c733a373a227475726b697368223b),
 ('97grobknl1vugr3mi7ij5ki9p1m000tb', '::1', 1642028316, 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323032383331363b6c616e67756167657c733a373a227475726b697368223b),
 ('umav32o2n8ldrjo359tjgmrpjo479pf0', '::1', 1642028644, 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323032383634343b6c616e67756167657c733a373a22656e676c697368223b6c616e67756167655f69647c733a313a2232223b),
-('cakb3d5cdvsv4p0fuibqu6o0nkbosspm', '::1', 1642028930, 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323032383634343b6c616e67756167657c733a373a227475726b697368223b6c616e67756167655f69647c733a313a2231223b);
+('cakb3d5cdvsv4p0fuibqu6o0nkbosspm', '::1', 1642029319, 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323032393331393b6c616e67756167657c733a373a227475726b697368223b6c616e67756167655f69647c733a313a2231223b),
+('s9dn781cgq2p9hqrfmfehkdljeb9irrh', '::1', 1642030497, 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323033303439373b6c616e67756167657c733a373a227475726b697368223b6c616e67756167655f69647c733a313a2231223b),
+('2hgfdfmc33dqa11e7s5r87qshrtl1lgd', '::1', 1642030835, 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323033303833353b6c616e67756167657c733a373a227475726b697368223b6c616e67756167655f69647c733a313a2231223b),
+('sp5t78qdr9jp6seg73f90ieggvf1vjt0', '::1', 1642030848, 0x5f5f63695f6c6173745f726567656e65726174657c693a313634323033303833353b6c616e67756167657c733a373a227475726b697368223b6c616e67756167655f69647c733a313a2231223b);
 
 -- --------------------------------------------------------
 
@@ -142,6 +145,7 @@ INSERT INTO `languages` (`id`, `title`) VALUES
 CREATE TABLE `menu` (
   `id` int(11) NOT NULL,
   `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `page` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `parents` int(11) NOT NULL,
   `is_sub_main` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -150,19 +154,19 @@ CREATE TABLE `menu` (
 -- Tablo döküm verisi `menu`
 --
 
-INSERT INTO `menu` (`id`, `title`, `parents`, `is_sub_main`) VALUES
-(1, 'home', 0, 0),
-(2, 'posts', 0, 0),
-(3, 'places_to_travel', 0, 0),
-(4, 'gallery', 0, 1),
-(5, 'sub_menu', 4, 0),
-(6, 'sub_menu', 4, 0),
-(7, 'sub_menu', 4, 1),
-(8, 'sub_sub_menu', 7, 0),
-(9, 'sub_sub_menu', 7, 1),
-(10, 'sub_sub_sub_menu', 9, 0),
-(11, 'sub_sub_sub_menu', 9, 0),
-(12, 'contact', 0, 0);
+INSERT INTO `menu` (`id`, `title`, `page`, `parents`, `is_sub_main`) VALUES
+(1, 'home', '', 0, 0),
+(2, 'posts', 'blog', 0, 0),
+(3, 'places_to_travel', 'places-to-travels', 0, 0),
+(4, 'gallery', '#', 0, 1),
+(5, 'sub_menu', 'sub-menu', 4, 0),
+(6, 'sub_menu', 'sub-menu', 4, 0),
+(7, 'sub_menu', 'sub-menu', 4, 1),
+(8, 'sub_sub_menu', 'sub-sub-menu', 7, 0),
+(9, 'sub_sub_menu', 'sub-sub-menu', 7, 1),
+(10, 'sub_sub_sub_menu', 'sub-sub-sub-menu', 9, 0),
+(11, 'sub_sub_sub_menu', 'sub-sub-sub-menu', 9, 0),
+(12, 'contact', 'contact', 0, 0);
 
 -- --------------------------------------------------------
 

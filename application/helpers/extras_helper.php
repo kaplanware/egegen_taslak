@@ -241,10 +241,10 @@ function drawElement($items){       //Alt alta kategorileri ekrana yazıyor.
         if(isset($_COOKIE["menu_thing"])){
             if($item->parents != 0) {
                 if ($item->is_sub_main != 1)
-                    echo '<a href="#" class="dropdown-item">' . site_phrase($item->title) . '</a>';
+                    echo '<a href="' . $item->page . '" class="dropdown-item">' . site_phrase($item->title) . '</a>';
                 else {
                     echo '<div class="dropdown-submenu">
-                        <a href="#" class="dropdown-item dropdown-toggle"> ' . site_phrase($item->title) . '</a>
+                        <a href="' . $item->page . '" class="dropdown-item dropdown-toggle"> ' . site_phrase($item->title) . '</a>
                         <div class="dropdown-menu">';
                     $_COOKIE["menu_thing"]++;
                 }
@@ -258,7 +258,7 @@ function drawElement($items){       //Alt alta kategorileri ekrana yazıyor.
         if($item->is_sub_main != 1){
             echo '
              <li class="nav-item">
-                <a href="#" class="navbar-nav-link">' . site_phrase($item->title) . '</a>
+                <a href="' . $item->page . '" class="navbar-nav-link">' . site_phrase($item->title) . '</a>
             </li>
            ';
             if(isset($_COOKIE["menu_thing"])){
@@ -269,7 +269,7 @@ function drawElement($items){       //Alt alta kategorileri ekrana yazıyor.
         else{
             echo '
              <li class="nav-item dropdown">
-                <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">' . site_phrase($item->title) . '</a>
+                <a href="' . $item->page . '" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">' . site_phrase($item->title) . '</a>
                 <div class="dropdown-menu">
            ';
             $_COOKIE["menu_thing"] = 1;

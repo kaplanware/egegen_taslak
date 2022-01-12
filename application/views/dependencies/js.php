@@ -1,18 +1,10 @@
 <!-- Core JS files -->
 <script src="<?= base_url("assets") ?>/global_assets/js/main/jquery.min.js"></script>
 <script src="<?= base_url("assets") ?>/global_assets/js/main/bootstrap.bundle.min.js"></script>
-<script src="<?= base_url("assets") ?>/global_assets/js/plugins/loaders/blockui.min.js"></script>
-<!-- /core JS files -->
-
-<!-- Theme JS files -->
-
-<script src="<?= base_url("assets") ?>/global_assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
 
 <script src="<?= base_url("assets/") ?>assets/js/app.js"></script>
 
 <?php loadView("dependencies/b_custom") ?>
-
-
 
 <script type="text/javascript" src="<?= base_url("assets/") ?>assets/js/jquery.sliderPro.min.js"></script>
 
