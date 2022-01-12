@@ -1,6 +1,6 @@
 <div class="navbar navbar-light navbar-expand-xl rounded">
     <div class="">
-        <a href="index.html" class="d-inline-block">
+        <a href="<?= base_url("") ?>" class="d-inline-block">
             <img src="https://egegen.com/upload/files/files_2019-07-18_13-52-37.png" class="w-25 ml-5 mr-n5" alt="">
         </a>
     </div>
@@ -8,7 +8,7 @@
     <div class="navbar-collapse collapse">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a href="#" class="navbar-nav-link ">Anasayfa</a>
+                <a href="<?= base_url("") ?>" class="navbar-nav-link ">Anasayfa</a>
             </li>
 
             <li class="nav-item dropdown">

@@ -12,19 +12,9 @@ class Settings extends CI_Controller
     public function index()
     {
 
-        $arr = array(
-            array(
-                "img" => "izmir1.img",
-                "text" => "Slider 1"
-            ),
-            array(
-                "img" => "izmir2.img",
-                "text" => "Slider 2"
-            ),
-            array(
-                "img" => "celcius.img",
-                "text" => "Slider 3"
-            )
+        $arr =  array(
+            "img" => "izmir1.img",
+            "text" => "Slider 1"
         );
 
         echo json_encode($arr);
@@ -38,3 +28,4 @@ class Settings extends CI_Controller
     }
 
 }
+
