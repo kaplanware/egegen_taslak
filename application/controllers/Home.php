@@ -6,7 +6,6 @@ class Home extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-
     }
 
     public function index()
@@ -14,7 +13,7 @@ class Home extends CI_Controller
         $data["title"] = site_phrase("home");
         $data["slider"] = json_decode($this->basic_model->getRow("settings", array("key" => "slider"))->value);
         $data["about"] = getAbout();
-        $data["blog"] = $this->basic_model->getTable("blog", array(), array(3,0));
+        $data["blog"] = $this->basic_model->getTable("blog", array("lang" => session("language_id")), array(3,0));
         
         $data["view"] = "home/home";
         loadView("index", $data);
@@ -32,9 +31,9 @@ class Home extends CI_Controller
 
     public function get_blog_posts()
     {
-        $blog = $this->basic_model->getTable("blog", array(), array(3,post("limit")));
+        $blog = $this->basic_model->getTable("blog", array("lang" => session("language_id")), array(3,post("limit")));
         if(empty($blog)) {
-            $blog = $this->basic_model->getTable("blog", array(), array(3, 0));
+            $blog = $this->basic_model->getTable("blog", array("lang" => session("language_id")), array(3, 0));
             array_push($blog, "end");
         }
         echo json_encode($blog);
@@ -52,9 +51,10 @@ class Home extends CI_Controller
 
     public function language($par)
     {
-
-        if($get = $this->basic_model->getRow("languages", array("id" => $par)))
+        if($get = $this->basic_model->getRow("languages", array("id" => $par))) {
             $this->session->set_userdata("language", $get->title);
+            $this->session->set_userdata("language_id", $get->id);
+        }
 
         goRef();
     }

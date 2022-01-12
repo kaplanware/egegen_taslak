@@ -9,8 +9,10 @@ class MY_Controller extends CI_Controller {
     {
         parent::__construct();
 
-        if(!$this->session->userdata("language"))
-            $this->session->set_userdata("language","turkish");
+        if(!$this->session->userdata("language")) {
+            $this->session->set_userdata("language", "turkish");
+            $this->session->set_userdata("language_id", 1);
+        }
     }
 
 }
